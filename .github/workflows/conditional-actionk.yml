@@ -1,0 +1,19 @@
+name: conditional-run 
+
+on: 
+  push: 
+    branches: 
+      - main 
+  workflow_dispatch: 
+
+
+jobs: 
+  conditional jobs: 
+    runs-on: ubuntu-latest
+    steps: 
+
+      - name: Always runs
+        run: echo "This is stop that always run regardless what happens"
+
+      - name: runs when changes are pushed to a branch named release
+        if: github.event_name == 'release' 
